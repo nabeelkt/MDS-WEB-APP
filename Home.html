@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>MDS DATA</title>
+    <link rel="icon" href="images/smartdrive3.ico" type="image/x-icon">
+    <meta name="description" content="Driving Schools Daily Accounting Software Web Application  Work Book Licence Vehicle Records Fees Struture Students Records Cash Book Driving School Licence Renewal Daily Accounts RTO Work Status Work Pending List Authority Receipts And Payments Customer Ledger Check List Students Fees Pending List Receipt PAyments "
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="assets/css/bootstrap-duallistbox.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+    <link rel="stylesheet" href="assets/css/loader.css?n=2" />
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="assets/css/xeditable.css" />
+
+    <link rel="stylesheet" href="assets/css/ng-tags-input.min.css" />
+    <!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+
+
+
+    <script src="assets/js/ace-extra.min.js"></script>
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-mocks.js"></script>
+    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/dirPagination.js"></script>
+    <script src="assets/js/ng-file-upload-shim.min.js" type="text/javascript"></script>
+    <script src="assets/js/ng-file-upload.min.js" type="text/javascript"></script>
+    <script src="assets/js/xeditable.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls.min.js"></script>
+    <script src="assets/js/ng-tags-input.min.js"></script>
+
+    <script language="JavaScript" src="js/ctrlMenu.js?n=216" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlDashboard.js?n=22" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlAutho.js?n=11" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrllicclass.js?n=5" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlVehclass.js?n=5" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlLicFees.js?n=8" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlLicence.js?n=23" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlRegistration.js?n=33" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlCheckList.js?n=18" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlService.js?n=3" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlWorkBook.js?n=63" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlRenewal.js?n=22" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlFeesPending.js?n=6" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlReceipt.js?n=9" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlLedger.js?n=16" type="text/javascript"></script>
+    <script language="JavaScript" src="js/CtrChangePassword.js?n=4" type="text/javascript"></script>
+    <script language="JavaScript" src="js/CtrlAccountHead.js?n=3" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrWorkStatus.js?n=2" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlprofile.js?n=4" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlWorkStatusReport.js?n=9" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlPayment.js?n=7" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlSetting.js?n=10" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlDayBook.js?n=3" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlWorkbookCashBalance.js?n=3" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlCustomer.js?n=3" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlOpeningBal.js?n=4" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlSmsReport.js?n=2" type="text/javascript"></script>
+    <script language="JavaScript" src="js/ctrlAgent.js?n=2" type="text/javascript"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+
+
+    <style>
+        div[ng-app] {
+            margin: 10px;
+        }
+
+        .table {
+            width: 100%
+        }
+
+        form[editable-form]>div {
+            margin: 10px 0;
+        }
+
+        .editable-wrap {
+            width: 100%;
+        }
+    </style>
+
+    <style type="text/css">
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+
+        form .progress {
+            line-height: 18px;
+        }
+
+        .progress {
+            display: inline-block;
+            width: 100px;
+            border: 3px groove #CCC;
+        }
+
+        .progress div {
+            font-size: smaller;
+            background: green;
+            color: black;
+            width: 0;
+        }
+    </style>
+
+
+    <style>
+        .thumb {
+            height: 75px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+        }
+    </style>
+    <style type="text/css">
+        .selected {
+            background-color: olive;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9986481464680256",
+            enable_page_level_ads: true
+        });
+    </script>
+
+</head>
+<!--{{ngCompany}}-->
+
+<body class="no-skin" ng-app='App'>
+    <div id="navbar" class="navbar navbar-default          ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+				</button>
+
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand">
+						<small  >
+							<i class="ace-icon fa fa-automobile white "></i>
+							Smart MDS 
+						</small>
+					</a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    <li class="purple dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+								<span class="badge badge-important">1</span>
+							</a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-exclamation-triangle"></i> 1 Notifications
+                            </li>
+
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+														SMS Balance
+													</span>
+                                                <span class="pull-right badge badge-info">+12</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                            <!--<li class="dropdown-footer">
+									<a href="#">
+										See all notifications
+										<i class="ace-icon fa fa-arrow-right"></i>
+									</a>
+								</li>-->
+                        </ul>
+                    </li>
+
+                    <li class="green dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success">1</span>
+							</a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-envelope-o"></i> 1 Messages
+                            </li>
+
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li>
+                                        <a href="#" class="clearfix">
+												<img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Alex:</span>
+														No new notifications
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>a moment ago</span>
+													</span>
+												</span>
+											</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <!--<li class="dropdown-footer">
+									<a href="inbox.html">
+										See all messages
+										<i class="ace-icon fa fa-arrow-right"></i>
+									</a>
+								</li>-->
+                        </ul>
+                    </li>
+
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" ng-controller="CtrlDash">
+								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									{{nguser}}
+								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#/Settings">
+										<i class="ace-icon fa fa-cog"></i>
+										Settings
+									</a>
+                            </li>
+
+                            <li>
+                                <a href="#/Profile">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+                            </li>
+
+                            <li>
+                                <a href="#/ChangePassword">
+										<i class="ace-icon fa fa-key"></i>
+										Change Password
+									</a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li ng-controller="CtrlDash">
+                                <a href="" ng-click="LogOut();">
+										<i class="ace-icon fa fa-power-off"></i>
+										Logout
+									</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container" ng-controller="CtrlDash">
+        <script type="text/javascript">
+            try {
+                ace.settings.loadState('main-container')
+            } catch (e) {}
+        </script>
+
+        <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+            <script type="text/javascript">
+                try {
+                    ace.settings.loadState('sidebar')
+                } catch (e) {}
+            </script>
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+
+                    <button class="btn btn-success" onclick="location.href = '#/Vehicle';">                                 
+							<i class="ace-icon fa fa-signal"></i>                                
+						</button>
+
+                    <button class="btn btn-info" onclick="location.href = '#/Licence';">
+							<i class="ace-icon fa fa-pencil"></i>
+						</button>
+
+                    <button class="btn btn-warning" onclick="location.href = '#/Receipt';">
+							<i class="ace-icon fa fa-users"></i>
+						</button>
+
+                    <button class="btn btn-danger" onclick="location.href = '#/CheckList';">
+							<i class="ace-icon fa fa-cogs"></i>
+						</button>
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div>
+            <!-- /.sidebar-shortcuts -->
+
+            <ul class="nav nav-list">
+                <li ng-class="{'active':selectedMenu === 'Dashboard'}">
+                    <a href="#/Dashboard">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Dashboard </span>
+						</a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li href="#" ng-class="{'active open':selectedMenu === 'Registration'}">
+                    <a class="dropdown-toggle">
+							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<span class="menu-text">
+								Registration
+							</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li ng-class="{'active':selectedTab === 'Vehicle'}" ng-click="selectedTab = 'Vehicle';selectedMenu='Registration'">
+                            <a href="#/Vehicle">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Vehicle Registration
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Licence'}" ng-click="selectedTab = 'Licence';selectedMenu='Registration'">
+                            <a href="#/Licence">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Student Registration
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'DailyClass'}" ng-click="selectedTab = 'DailyClass';selectedMenu='Registration'">
+                            <a href="#/DailyClass">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Class Registration
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Renewal'}" ng-click="selectedTab = 'Renewal';selectedMenu='Registration'">
+                            <a href="#/Renewal">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Licence Register
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+
+                <li ng-show="CusStatus == 'V'" href="#" ng-class="{'active open':selectedMenu === 'Accounts'}">
+                    <a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list"></i>
+							<span class="menu-text"> Accounts </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li ng-class="{'active':selectedTab === 'Receipt'}" ng-click="selectedTab = 'Receipt';selectedMenu='Accounts'">
+
+                            <a href="#/Receipt">
+							        <i class="menu-icon fa fa-caret-right"></i>
+							        Receipt 
+                                </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li ng-class="{'active':selectedTab === 'Payment'}" ng-click="selectedTab = 'Payment';selectedMenu='Accounts'">
+                            <a href="#/Payment">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Payment
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-class="{'active':selectedTab === 'WorkBook'}" ng-click="selectedTab = 'WorkBook';selectedMenu='Accounts'">
+                            <a href="#/WorkBook">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Work book
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list-alt"></i>
+							<span class="menu-text"> Repots </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        <li ng-class="{'active':selectedTab === 'CheckList'}" ng-click="selectedTab = 'CheckList';selectedMenu='Report'">
+                            <a href="#/CheckList">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Check List
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Ledger'}" ng-click="selectedTab = 'Ledger';selectedMenu='Report'">
+                            <a href="#/Ledger">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Ledger
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'DayBook'}" ng-click="selectedTab = 'DayBook';selectedMenu='Report'">
+                            <a href="#/DayBook">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Cash Book
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'RptRP'}" ng-click="selectedTab = 'RptRP';selectedMenu='Report'">
+                            <a href="#/RptRP">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Receipts & Payments
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'FeesPending'}" ng-click="selectedTab = 'FeesPending';selectedMenu='Report'">
+                            <a href="#/FeesPending">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Fees Pending
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'WorkStatusReport'}" ng-click="selectedTab = 'WorkStatusReport';selectedMenu='Report'">
+                            <a href="#/WorkStatusReport">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Work Status
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'WorkBookCashBalance'}" ng-click="selectedTab = 'WorkBookCashBalance';selectedMenu='Report'">
+                            <a href="#/WorkBookCashBalance">
+									<i class="menu-icon fa fa-caret-right"></i>
+									WorkBook Cash Balance
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'SMSReport'}" ng-click="selectedTab = 'SMSReport';selectedMenu='Report'">
+                            <a href="#/SMSReport">
+									<i class="menu-icon fa fa-caret-right"></i>
+									SMS Report
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li ng-class="{'active open':selectedMenu === 'Master'}">
+                    <a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-key"></i>
+							<span class="menu-text"> Master </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Customer'}" ng-click="selectedTab = 'Customer';selectedMenu='Master'">
+                            <a href="#/Customer">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Customer
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Agent'}" ng-click="selectedTab = 'Agent';selectedMenu='Master'">
+                            <a href="#/Agent">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Agent
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'Opening'}" ng-click="selectedTab = 'Opening';selectedMenu='Master'">
+                            <a href="#/Opening">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Opening Balance
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-class="{'active':selectedTab === 'Authority'}" ng-click="selectedTab = 'Authority';selectedMenu='Master'">
+                            <a href="#/Authority">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Authority
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-class="{'active':selectedTab === 'VehClass'}" ng-click="selectedTab = 'VehClass';selectedMenu='Master'">
+                            <a href="#/VehClass">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Vehicle Class
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'LicClass'}" ng-click="selectedTab = 'LicClass';selectedMenu='Master'">
+                            <a href="#/LicClass">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Licence Class
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'AccountHead'}" ng-click="selectedTab = 'AccountHead';selectedMenu='Master'">
+                            <a href="#/AccountHead">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Account Heads
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'StatusName'}" ng-click="selectedTab = 'StatusName';selectedMenu='Master'">
+                            <a href="#/StatusName">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Work Status Name
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li ng-show="CusStatus == 'V'" ng-class="{'active':selectedTab === 'StatusName'}" ng-click="selectedTab = 'StatusName';selectedMenu='Master'">
+                            <a href="MyReport/Default.aspx" target="_blank">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Test
+								</a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a data-url="page/calendar" href="calendar.html">
+							<i class="menu-icon fa fa-calendar"></i>
+
+							<span class="menu-text">
+								Calendar
+
+								<!-- #section:basics/sidebar.layout.badge -->
+								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
+									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+								</span>
+
+								<!-- /section:basics/sidebar.layout.badge -->
+							</span>
+						</a>
+
+                    <b class="arrow"></b>
+                </li>
+
+
+            </ul>
+            <!-- /.nav-list -->
+
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+
+                <div class="page-content">
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div ng-view></div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.page-content -->
+            </div>
+        </div>
+        <!-- /.main-content -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+							<span class="blue bolder">MDS</span> Application &copy; 2022-2032
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+    </div>
+    <!-- /.main-container -->
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+
+    <script>
+    </script>
+
+
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <script src="assets/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="assets/js/jquery.raty.min.js"></script>
+    <script src="assets/js/bootstrap-multiselect.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/jquery-typeahead.js"></script>
+    <!-- page specific plugin scripts -->
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="assets/js/jquery.flot.min.js"></script>
+    <script src="assets/js/jquery.flot.pie.min.js"></script>
+    <script src="assets/js/jquery.flot.resize.min.js"></script>
+
+
+    <script src="assets/js/paper.js?n=1"></script>
+    <script src="assets/js/html5-chart.js?n=3"></script>
+    <!-- ace scripts -->
+    <script src="assets/js/ace-elements.min.js"></script>
+    <script src="assets/js/ace.min.js"></script>
+
+
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+            _title: function(title) {
+                var $title = this.options.title || '&nbsp;'
+                if (("title_html" in this.options) && this.options.title_html == true)
+                    title.html($title);
+                else title.text($title);
+            }
+        }));
+
+        $("#id-btn-dialog2").on('click', function(e) {
+            e.preventDefault();
+
+            $("#dialog-confirm").removeClass('hide').dialog({
+                resizable: false,
+                width: '320',
+                modal: true,
+                title: "<div class='widget-header'><h4 class='smaller'><i class='ace-icon fa fa-exclamation-triangle red'></i> Information!!</h4></div>",
+                title_html: true,
+                buttons: [{
+                        html: "<i class='ace-icon fa fa-trash-o bigger-110'></i>&nbsp; Delete all items",
+                        "class": "btn btn-danger btn-minier",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    {
+                        html: "<i class='ace-icon fa fa-times bigger-110'></i>&nbsp; Cancel",
+                        "class": "btn btn-minier",
+                        click: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+
+
+    <script>
+        $('#cmpclsofveh').val("");
+        $("#cmpclsofveh").multiselect();
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#dtpregfrm").datepicker({
+                dateFormat: 'dd/MM/yyyy'
+            });
+        });
+    </script>
+
+
+
+    <!-- inline scripts related to this page -->
+
+
+    <!-- inline scripts related to this page -->
+</body>
+
+</html>-->

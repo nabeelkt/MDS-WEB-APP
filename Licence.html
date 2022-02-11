@@ -1,0 +1,879 @@
+<style>
+
+
+    div[ng-app] {
+        margin: 10px;
+    }
+
+    .table {
+        width: 100%
+    }
+
+    form[editable-form]>div {
+        margin: 10px 0;
+    }
+
+    .editable-wrap {
+        width: 100%;
+    }
+</style>
+
+<style type="text/css">
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+
+    form .progress {
+        line-height: 18px;
+    }
+
+    .progress {
+        display: inline-block;
+        width: 100px;
+        border: 3px groove #CCC;
+    }
+
+    .progress div {
+        font-size: smaller;
+        background: green;
+        color: black;
+        width: 0;
+    }
+</style>
+
+
+<style>
+    .thumb {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }
+</style>
+<style type="text/css">
+    .selected {
+        background-color: olive;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+
+
+
+
+
+<div class="main-container ace-save-state" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">Home</a>
+                    </li>
+
+
+                    <li class="active">Student Registration</li>
+                </ul>
+                <!-- /.breadcrumb -->
+
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                    </form>
+                </div>
+                <!-- /.nav-search -->
+            </div>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        Student Registration
+                        <small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									Manage Your Students Details
+								</small>
+                    </h1>
+                </div>
+                <!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <form class="form-horizontal" role="form">
+                            <div class="row">
+                                <div class="col-sm-6" ng-init="LoadAuthority();LoadDef();">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtcusname">Name</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <div class="inner-addon right-addon">
+                                                    <i class="glyphicon" id="contno"></i>
+                                                    <input type="text" id="txtcusname" placeholder="Enter The Student Name" ng-model="customer.cusname" ng-keypress="foo.Cus=true" ng-change="autocompCustomer();" ng-keydown="myFunct()" class="form-control" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-show="foo.Cus">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-9">
+                                            <table id="tbCus" class="table table-bordered" arrow-selector2>
+                                                <thead>
+                                                    <tr>
+                                                        <td style="display:none">Cus Id</td>
+                                                        <td>Name </td>
+                                                        <td>Address</td>
+                                                        <td>Mobile<button type="button" class="close" data-dismiss="alert" style="color:Red" ng-click="foo.Cus=false"><i class="ace-icon fa fa-times"></i></button></td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="Cus in dtCust " ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)">
+                                                        <td style="display:none">{{ Cus.ids }}</td>
+                                                        <td><a style="color:blue" ng-click="setClickedRow($index);SetDataCustomer();">{{ Cus.Name }}</a></td>
+                                                        <td>{{ Cus.Address }}</td>
+                                                        <td>{{ Cus.Mob }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!--<select id="lstFruits" multiple="multiple">
+                                               <option value="cheese">Cheese</option>
+                                                <option value="tomatoes">Tomatoes</option>
+                                                <option value="mozarella">Mozzarella</option>
+                                                <option value="mushrooms" >Mushrooms</option>
+                                                <option value="pepperoni">Pepperoni</option>
+                                                <option value="onions">Onions</option>
+                                            </select>  -->
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtswd">S/W/D Of</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input type="text" placeholder="Enter The Guardian Name" id="txtswd" ng-model="customer.swof" ng-focus="foo.bar=false" class="col-xs-12 col-sm-12" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtaddress">Address</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <textarea id="txtaddress" placeholder="Enter The Address" ng-model="customer.cusadd" class="col-xs-12 col-sm-12"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtpin">Pin</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input class="col-xs-12 col-sm-12" id="txtpin" ng-model="customer.pin" type="text" placeholder="Enter The Pin Number" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtphone">Mobile</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input class="col-xs-12 col-sm-12" type="text" placeholder="Enter Your Mobile Number" id="txtmob" ng-model="customer.mob" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtphone">Phone</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input class="col-xs-12 col-sm-12" type="text" placeholder="Enter Your Phone Number" id="txtlphone" ng-model="customer.phone" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="dtpdob">DOB</label>
+                                        <div class="col-sm-4">
+                                            <div class="pos-rel">
+                                                <input type="date" class="col-xs-12 col-sm-12" id="dtpdob" ng-model="customer.dob" ng-change="chage();" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-1 center">Age</div>
+                                        <div class="col-xs-4 center">
+                                            <div class="pos-rel">
+                                                <input type="text" class="col-xs-12 col-sm-12" id="Text1" ng-model="customer.age" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="cmpblood">Blood</label>
+                                        <div class="col-sm-9">
+                                            <select class="col-xs-12 col-sm-12 " id="cmbblood" ng-model="customer.blood" placeholder="Select Blood group">
+												        <option value=""></option>
+												        <option value="A+">A+</option>
+												        <option value="A-">A-</option>
+												        <option value="B+">B+</option>
+												        <option value="B-">B-</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="O-">O-</option>
+												        <option value="AB+">AB+</option>
+												        <option value="AB-">AB-</option>
+												    </select>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtregyear">Register Year</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <div>
+                                                    <input class="col-xs-12 col-sm-12" type="text" id="txtregyear" ng-model="licence.regyear" placeholder="Enter The Register Year" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtentno">Entrol No</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input class="col-xs-12 col-sm-12" type="text" id="txtentno" ng-model="licence.entno" placeholder="Enter The Entrol No" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="dtpentdate">Entrol Date</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <div>
+                                                    <input type="date" class="col-xs-12 col-sm-12" id="dtpentdate" ng-model="licence.entdate" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="dtplendate">Learners Date</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input type="date" class="col-xs-12 col-sm-12" id="dtplendate" ng-model="licence.lendate" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="cmbAutho"> Authority:</label>
+                                        <div class="col-sm-9">
+                                            <select class="col-xs-12 col-sm-12 " id="cmbAutho" ng-model="licence.authid" placeholder="Choose a RTO..." ng-options="drAutho.id as drAutho.AuthoName for drAutho in dtAutho" />
+                                        </div>
+                                    </div>
+
+                                    <div class="space-6"></div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3  control-label  col-xs-12 col-sm-3 no-padding-right" for="cmpclsofveh">Class of vehile</label>
+                                        <div class="col-sm-9">
+                                            <select id="cmpclsofveh" class="col-xs-12 col-sm-12 multiselect" multiple="" ng-model="licence.classofveh">
+												            <option value="c1">Motor cycle without gear</option>
+												            <option value="c2">Motor cycle with gear</option>
+												            <option value="c3">Invalid carriage</option>
+                                                            <option value="c4">Light Motor Vehcile</option>
+												            <option value="c5">Road roller</option>
+												            <option value="c6">Three wheeler</option>
+                                                            <option value="c7">Excavtor</option>
+												            <option value="c8">Badge</option>
+												            <option value="c9">HTV</option>
+                                                            <option value="c10">MPMV</option>
+                                                            <option value="c11">MGV</option>
+                                                            <option value="c12">HPV</option>
+                                                            <option value="c13">HGV</option>
+                                                            <option value="c14">DLR</option>
+											            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtremark">Remarks</label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <textarea id="txtremark" ng-model="licence.remark" placeholder=" Ener The Remarks" class="col-xs-12 col-sm-12"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txttot">Total amount </label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input type="text" class="col-xs-12 col-sm-12" id="txttot" ng-model="licence.tot" ng-change="Fun_ChangeBal();" placeholder=" Ener The Total Amount" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txtadv">Advance amount </label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input type="text" class="col-xs-12 col-sm-12" id="txtadv" ng-model="licence.adv" ng-change="Fun_ChangeBal();" placeholder=" Ener The Advance Amount" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="txbal">Balance amount </label>
+                                        <div class="col-sm-9">
+                                            <div class="pos-rel">
+                                                <input readonly="" type="text" class="col-xs-12 col-sm-12" id="txbal" ng-model="licence.bal" placeholder=" Ener The Balance Amount" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title">Upload Image</h4>
+
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                                            </a>
+
+                                                <a href="#" data-action="close">
+                                                                <i class="ace-icon fa fa-times"></i>
+                                                            </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <form name="myForm">
+                                                            <span class="progress" ng-show="picFile.progress >= 0">
+                                                                            <div style="width:picFileprogress" ng-bind="picFile.progress + '%'"></div>
+                                                                        </span>
+
+                                                            <!---->
+                                                            <div id="user-profile-1" class="user-profile row" style="display:none" ng-cloak>
+                                                                <div class="col-xs-12 col-sm-3 center">
+                                                                    <div>
+                                                                        <span class="profile-picture">
+													                                    <img id="avatar" class="editable img-responsive" alt="Photo" src="{{ImgFileName}}"/>
+                                                                                        <a  href ng-click="fn_ClearImage();">Clear Image</a>
+												                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--<img id="imgPhpto" style="height:100px;" src ="{{ImgFileName}}" alt = "Generic placeholder thumbnail">-->
+                                                            <div id="uploadid" ng-cloak>
+                                                                <input type="file" ngf-select ng-model="picFile" name="file" multiple accept="image//gif, image/jpg, image/jpeg, image/png" ngf-max-size="2MB" required ngf-model-invalid="errorFile" id="id-input-file-3" />
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title">Learners Licence</h4>
+                                            <span class="widget-toolbar">
+														    <a href="#" data-action="reload">
+															    <i class="ace-icon fa fa-refresh"></i>
+														    </a>
+                                                            <a href="#" data-action="collapse">
+															    <i class="ace-icon fa fa-chevron-up"></i>
+														    </a>
+                                                        </span>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="txtlltno">Learners Lic No</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <div class="pos-rel">
+                                                            <input class="col-xs-12 col-sm-12" type="text" id="txtlltno" ng-model="licence.lenlicno" placeholder="Enter The Licence No" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="dtpissuedate">Issue Date</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtpissuedate" ng-model="licence.isudate" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center">Valid From</label>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtpllfrom" ng-change="chlenlic();" ng-model="licence.lenlicfrom" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-1 center">To</div>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtpllto" ng-model="licence.lenlicto" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="txtdltestdate">DL Test Date</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <div class="pos-rel">
+                                                            <input type="date" id="txtdltestdate" ng-model="licence.dltestdate" class="col-xs-12 col-sm-12" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="cmbattno">Attempt No</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <select class="col-xs-12 col-sm-12 " id="cmbattno" ng-model="licence.attemptno" placeholder="Select Attempt No">
+												                        <option value="">  </option>
+												                        <option value="A">First</option>
+												                        <option value="B">Second</option>
+												                        <option value="C">Third</option>
+												                        <option value="D">Fourth</option>
+                                                                        <option value="E">Fifth</option>
+                                                                    </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="cmbpf">Pass/Fail</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <select class="col-xs-12 col-sm-12 " id="cmbpf" ng-model="licence.porf" placeholder="Select Attempt">
+												                        <option value="">  </option>
+												                        <option value="Pass">Pass</option>
+												                        <option value="Fail">Fail</option>
+												                    </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title">Driving Licence</h4>
+                                            <span class="widget-toolbar">
+														    <a href="#" data-action="reload">
+															    <i class="ace-icon fa fa-refresh"></i>
+														    </a>
+                                                            <a href="#" data-action="collapse">
+															    <i class="ace-icon fa fa-chevron-up"></i>
+														    </a>
+                                                        </span>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="txtlicno">Licence No</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <div class="pos-rel">
+                                                            <input class="col-xs-12 col-sm-12" type="text" id="txtlicno" ng-model="licence.licno" placeholder="Enter The Licence No" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center" for="txtbadge">Badge No</label>
+                                                    <div class="col-xs-9 center ">
+                                                        <div class="pos-rel">
+                                                            <input class="col-xs-12 col-sm-12" type="text" id="txtbadge" ng-model="licence.badge" placeholder="Enter The Badge No" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center">NTV From</label>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtpntvfrom" ng-change="chntv();" ng-model="licence.ntvfrom" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-1 center">To</div>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtpntvto" ng-model="licence.ntvto" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-xs-3 center">TV From</label>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtptvfrom" ng-change="chtv();" ng-model="licence.tvfrom" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-1 center">To</div>
+                                                    <div class="col-xs-4 center">
+                                                        <div class="pos-rel">
+                                                            <input type="date" class="col-xs-12 col-sm-12" id="dtptvto" ng-model="licence.tvto" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="button" ng-click="btnSubmit();">
+												                <i class="ace-icon fa fa-check bigger-110"></i>
+												                Submit
+											                </button> &nbsp; &nbsp; &nbsp;
+                                    <button class="btn btn-warning" type="button" ng-click="btnClear();">
+												                <i class="ace-icon fa fa-undo bigger-110"></i>
+												                Reset
+											                </button> &nbsp; &nbsp; &nbsp;
+                                    <button class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg" ng-click="LoadData();">
+												                <i class="ace-icon fa fa-search bigger-110"></i>
+												                Search
+											                </button> &nbsp; &nbsp; &nbsp;
+                                    <button class="btn btn-danger" type="button" ng-click="btnDelete();">
+												                <i class="ace-icon fa fa-trash-o bigger-110"></i>
+												                Delete
+											                </button> &nbsp; &nbsp; &nbsp;
+                                    <button class="btn btn-success" type="button" href="#/CheckList" ng-click="ClickLedger();">
+												                <i class="ace-icon fa fa-building-o bigger-110"></i>
+												                Ledger
+											                </button>
+                                    <!--<a href="#" id="id-btn-dialog2" class="btn btn-info btn-sm">Confirm Dialog</a>-->
+                                    <!--<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				                                                <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			                                                </a>         -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.page-content -->
+        </div>
+        <!-- /.main-content iNNER -->
+    </div>
+    <!-- /.main-content -->
+    <div id="dialog-confirm" class="hide">
+        <div class="alert alert-info bigger-110">
+            {{msg}}
+        </div>
+
+        <div class="space-6"></div>
+
+        <p class="bigger-110 bolder center grey">
+
+        </p>
+    </div>
+    <!-- #dialog-confirm -->
+
+
+    <div id="dialog-delete" class="hide">
+        <div class="alert alert-info bigger-110">
+            These items will be permanently deleted and cannot be recovered.
+        </div>
+
+        <div class="space-6"></div>
+
+        <p class="bigger-110 bolder center grey">
+            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i> Are you sure?
+        </p>
+    </div>
+    <!-- #dialog-Delete -->
+</div>
+<!-- /.main-container -->
+
+
+<!--<script src="assets/js/jquery-2.1.4.min.js"></script>		 
+		<script src="assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+		<script src="assets/js/jquery.raty.min.js"></script>
+		<script src="assets/js/bootstrap-multiselect.min.js"></script>
+		<script src="assets/js/select2.min.js"></script>
+		<script src="assets/js/jquery-typeahead.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>		
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>-->
+
+
+<!-- <script src="assets/js/jquery-2.1.4.min.js"></script>	
+     <script src="assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="assets/js/jquery.raty.min.js"></script>
+     <script src="assets/js/select2.min.js"></script>
+	<script src="assets/js/bootstrap-multiselect.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/js/jquery.ui.touch-punch.min.js"></script>		
+    <script src="assets/js/ace-elements.min.js"></script>
+    <script src="assets/js/ace.min.js"></script>-->
+
+
+<script type="text/javascript">
+    jQuery(function($) {
+        var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox({
+            infoTextFiltered: '<span class="label label-purple label-lg">Filtered</span>'
+        });
+        var container1 = demo1.bootstrapDualListbox('getContainer');
+        container1.find('.btn').addClass('btn-white btn-info btn-bold');
+
+        /**var setRatingColors = function() {
+        $(this).find('.star-on-png,.star-half-png').addClass('orange2').removeClass('grey');
+        $(this).find('.star-off-png').removeClass('orange2').addClass('grey');
+        }*/
+        $('.rating').raty({
+            'cancel': true,
+            'half': true,
+            'starType': 'i',
+            'click': function() {
+                setRatingColors.call(this);
+            },
+            'mouseover': function() {
+                setRatingColors.call(this);
+            },
+            'mouseout': function() {
+                setRatingColors.call(this);
+            }
+        }) //.find('i:not(.star-raty)').addClass('grey');
+
+
+
+        //////////////////
+        //select2
+        $('.select2').css('width', '200px').select2({
+            allowClear: true
+        })
+        $('#select2-multiple-style .btn').on('click', function(e) {
+            console.log('test');
+            var target = $(this).find('input[type=radio]');
+            var which = parseInt(target.val());
+            if (which == 2) $('.select2').addClass('tag-input-style');
+            else $('.select2').removeClass('tag-input-style');
+        });
+
+        //////////////////
+        $('.multiselect').multiselect({
+            enableFiltering: true,
+            enableHTML: true,
+            buttonClass: 'btn btn-white btn-primary',
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"><span class="multiselect-selected-text"></span> &nbsp;<b class="fa fa-caret-down"></b></button>',
+                ul: '<ul class="multiselect-container dropdown-menu"></ul>',
+                filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
+                filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
+                li: '<li><a tabindex="0"><label></label></a></li>',
+                divider: '<li class="multiselect-item divider"></li>',
+                liGroup: '<li class="multiselect-item multiselect-group"><label></label></li>'
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(function($) {});
+
+
+    $('#id-input-file-3').ace_file_input({
+        style: 'well',
+        btn_choose: 'Drop Image here or click to choose',
+        btn_change: null,
+        no_icon: 'ace-icon fa fa-cloud-upload',
+        droppable: true,
+        thumbnail: 'large' //small |large fit             
+            ,
+        preview_error: function(filename, error_code) {}
+
+    }).on('change', function() {});
+
+    //dynamically change allowed formats by changing allowExt && allowMime function
+    $('#id-file-format').removeAttr('checked').on('change', function() {
+        var whitelist_ext, whitelist_mime;
+        var btn_choose
+        var no_icon
+        if (this.checked) {
+            btn_choose = "Drop images here or click to choose";
+            no_icon = "ace-icon fa fa-picture-o";
+
+            whitelist_ext = ["jpeg", "jpg", "png", "gif", "bmp"];
+            whitelist_mime = ["image/jpg", "image/jpeg", "image/png", "image/gif", "image/bmp"];
+        } else {
+            btn_choose = "Drop files here or click to choose";
+            no_icon = "ace-icon fa fa-cloud-upload";
+
+            whitelist_ext = null; //all extensions are acceptable
+            whitelist_mime = null; //all mimes are acceptable
+        }
+        var file_input = $('#id-input-file-3');
+        file_input
+            .ace_file_input('update_settings', {
+                'btn_choose': btn_choose,
+                'no_icon': no_icon,
+                'allowExt': whitelist_ext,
+                'allowMime': whitelist_mime
+            })
+        file_input.ace_file_input('reset_input');
+
+        file_input
+            .off('file.error.ace')
+            .on('file.error.ace', function(e, info) {
+
+            });
+    });
+</script>
+
+
+
+
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+
+
+<!--<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>-->
+
+<!--<script type="text/javascript">
+        $(function () {
+            $('#lstFruits').multiselect({
+                includeSelectAllOption: true
+            });
+
+        });
+    </script>-->
+<!--<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />-->
+
+
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+
+
+
+            <div role="main" class="row" id="divmodalpersonal">
+                <div class="col-md-12">
+                    <div class="bs-component">
+
+                        <div class="" style="margin-top:10px;">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="txtsearch" class="col-lg-3 control-label" style="font-weight:800">Search</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control" id="txtsearch" placeholder="Type The Key item" ng-model="search">
+                                    </div>
+                                </div>
+                            </form>
+                            <!--loder-->
+                            <div id="loader" style="display:none" class="me-pre-con"></div>
+                            <!--loder-->
+                            <table class="table table-striped table-hover">
+
+                                <thead>
+                                    <tr>
+                                        <td style="display:none">refno</td>
+                                        <td>
+                                            <a href ng-click="sortType = 'SlNo'; sortReverse = !sortReverse">
+                                            SlNo
+                                            <span ng-show="sortType == 'SlNo' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'SlNo' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="sortType = 'cusname'; sortReverse = !sortReverse">
+                                            Student Name
+                                            <span ng-show="sortType == 'cusname' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'cusname' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="sortType = 'mob'; sortReverse = !sortReverse">
+                                            Mobile
+                                            <span ng-show="sortType == 'mob' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'mob' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="sortType = 'entno'; sortReverse = !sortReverse">
+                                            Entrol No
+                                            <span ng-show="sortType == 'entno' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'entno' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="sortType = 'entdate'; sortReverse = !sortReverse">
+                                            Entrol Date
+                                            <span ng-show="sortType == 'entdate' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'entdate' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href ng-click="sortType = 'bal'; sortReverse = !sortReverse">
+                                            Balnace
+                                            <span ng-show="sortType == 'bal' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'bal' && sortReverse" class="fa fa-caret-up"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr dir-paginate="dr in dtLen|orderBy:sortType:sortReverse|filter:search|itemsPerPage:8">
+                                        <td style="display:none">{{dr.licid}}</td>
+                                        <td>{{dr.SlNo}}</td>
+                                        <td><a href="" id='A1' ng-click="SetData(dr.licid)" data-dismiss="modal" style='text-decoration:none;'>{{dr.cusname}}</a></td>
+                                        <td>{{dr.mob}}</td>
+                                        <td>{{dr.entno}}</td>
+                                        <td>{{dr.entdate}}</td>
+                                        <td>{{dr.bal}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Close -->
